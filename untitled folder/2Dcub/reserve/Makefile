@@ -17,11 +17,12 @@ SRC = cub.c \
 	parsing/reading_map.c \
 	parsing/errors_handler.c \
 	parsing/parisng.c \
-	drawing/2d_map.c \
+	drawing/draw.c \
 	drawing/mlx_functions.c \
 	drawing/window.c \
 	drawing/player_movements.c \
 	drawing/cast_rays.c \
+	drawing/2D_3D.c \
 
 	
 NAME = cub3D

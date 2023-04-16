@@ -104,7 +104,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	cast_rays(t_data *img);
 int		draw_map(t_data *img);
 int		draw_lines(t_data *img);
-void draw_rays(t_data *img , float ray ,int color );
+void 	draw_rays(t_data *img , float ray ,int color );
 void	ft_images(t_data *img);
 void	raycasting(t_data img);
 t_data	init_func(t_data img);
@@ -118,14 +118,22 @@ void	move_player_w(t_data *img);
 void	move_player_s(t_data *img);
 void	move_player_a(t_data *img);
 void	move_player_d(t_data *img);
+
 void	turn_right(t_data *img);
 void	turn_left(t_data *img);
+// void	up_right_rays(t_data *img, double *x);
+// void	up_left_rays(t_data *img , double *x);
+// void	down_right_rays(t_data *img , double *x);
+// void	down_left_rays(t_data *img, double *x);
+
 void	up_right_rays(t_data *img);
-void	up_left_rays(t_data *img);
-void	down_right_rays(t_data *img);
+void	up_left_rays(t_data *img );
+void	down_right_rays(t_data *img );
 void	down_left_rays(t_data *img);
+
 void	right_side_angle(t_data *img);
 void	left_side_angle(t_data *img);
+
 double	cast_rays1(t_data *img , float view);
 double	cast_rays2(t_data *img , float view);
 double	cast_rays3(t_data *img, float view);
@@ -136,6 +144,7 @@ void	draw_rays(t_data *img , float ray ,int color );
 t_data	init_func(t_data img);
 void	ft_images(t_data *img);
 void	raycasting(t_data img);
+void dala(t_data *img , double ray, double *x, int color);
 
 
 #endif

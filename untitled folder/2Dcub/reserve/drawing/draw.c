@@ -70,3 +70,39 @@ int	draw_map(t_data *img)
 		(img->map->x * 50 - 5), (img->map->y * 50) - 5);
 	return (0);
 }
+
+void dala(t_data *img , double ray, double *x, int color)
+{
+		double distance = (img->height  / 2) * tan(M_PI  / 3);
+		//double wall_d = (ray * 50 ) * cos(img->map->angle); 
+		double wall = round((distance * 50) / (ray * 50 )) ;
+		
+		double y = (img->height  / 2 ) - (wall / 2) ;
+	
+		//int i = (( ray ) * 5 ;
+			
+			while(y <= (img->height / 2) + (wall / 2)) 
+			{
+				 //mlx_pixel_put(img->mlx,img->win, *x, y, color);
+				my_mlx_pixel_put(img,*x, y, color);
+				y += 1;
+ 			}
+	//mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
+}
+
+void	draw_rays(t_data *img, float ray,int color)
+{
+	double	x;
+	double	y;
+	int		i;
+
+	y = img->map->y * 50;
+	x = img->map->x * 50;
+	i = (( ray ) * 50);
+	while(i--) 
+	{
+		mlx_pixel_put(img->mlx,img->win, x, y, color);
+		y -= sin(img->map->view);
+		x += cos(img->map->view);
+ 	}
+}
