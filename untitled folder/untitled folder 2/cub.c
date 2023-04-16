@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 		if (!check_path(av[1]))
 			exit_error("ERROR : PATH must be *.cub\n");
 		img.map = parsing(av[1]);
-		 raycasting(img);
+		 raycasting(&img);
 	}
 	else
 		exit_error("ERROR : Enought args [./cub3D map.cub]\n");

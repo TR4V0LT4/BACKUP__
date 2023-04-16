@@ -27,7 +27,7 @@ SRC = cub.c \
 	
 NAME = cub3D
 
-CC = cc
+CC = cc -g3
 
 CFLAGS = -Wall -Wextra -Werror  -fsanitize=address 
 

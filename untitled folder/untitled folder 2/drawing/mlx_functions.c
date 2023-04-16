@@ -28,6 +28,8 @@ int	move_player(int keycode, t_data *img)
 		turn_right(img);
 	if (keycode == 123)
 		turn_left(img);
+	draw_world(img);
+	cast_rays(img);
 	return (0);
 }
 
@@ -281,15 +283,16 @@ void	draw_rays(t_data *img, float ray,int color)
  	}
 }
 
-t_data	init_func(t_data img)
+t_data	*init_func(t_data *img)
 {
-	img.height = (img.map->len - 1) * 50;
-	img.width = (img.map->long_line ) * 50;
-	img.map->y = img.map->y_player;
-	img.map->x = img.map->x_player;
-	img.mlx = mlx_init();
-	img.win = mlx_new_window(img.mlx, img.width, img.height, "Hello");
-	img.img = mlx_new_image(img.mlx, img.width, img.height);
+	img->height = 750;
+	img->width = 750;
+	img->map->y = img->map->y_player;
+	img->map->x = img->map->x_player;
+	//img->map->last_ray = 0;
+	img->mlx = mlx_init();
+	img->win = mlx_new_window(img->mlx, img->width, img->height, "Hello");
+	img->img = mlx_new_image(img->mlx, img->width, img->height);
 	return (img);
 }
 
@@ -303,20 +306,18 @@ void	ft_images(t_data *img)
 		&img->width, &img->height);
 }
 
-void raycasting(t_data img)
+void raycasting(t_data *img)
 {
 	img = init_func(img);
-	ft_images(&img);
-	img.height = (img.map->len - 1) * 50;
-	img.width = (img.map->long_line - 1) * 50;
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
+	ft_images(img);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
 	//draw_map(&img);
-	//	draw_world(&img);
+		draw_world(img);
 		//cast_rays(&img);
 	//player moves//
 	//cast_rays(&img);
 	destroy_window(img);
-	mlx_hook(img.win, 2, 0L, move_player, &img);
-	mlx_loop(img.mlx);
+	mlx_hook(img->win, 2, 0L, move_player, img);
+	mlx_loop(img->mlx);
 }

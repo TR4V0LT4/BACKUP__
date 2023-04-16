@@ -73,7 +73,7 @@ t_bool	check_elements(char **map)
 			printf("--> %c\n", map[i][j]);
 			if (!ft_strchr("01NSEW \t", map[i][j]))
 			{
-				printf("here i'm \n");
+
 				exit_error("ERROR : wrong element\n");
 			}
 			else if (ft_strchr("NSEW", map[i][j]))

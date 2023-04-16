@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   window->c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaadoun <yjaadoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -45,8 +45,8 @@ int	cross_key()
 	exit(1);
 }
 
-void	destroy_window(t_data game)
+void	destroy_window(t_data *game)
 {
-	mlx_hook(game.win, 2, 1L << 0, &esc_key, &game);
-	mlx_hook(game.win, 17, 1L << 0, &cross_key, &game);
+	mlx_hook(game->win, 2, 1L << 0, &esc_key, game);
+	mlx_hook(game->win, 17, 1L << 0, &cross_key, game);
 }

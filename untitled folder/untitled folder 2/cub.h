@@ -61,7 +61,8 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
-	float		view;		
+	float		view;	
+	double			i;
 	t_alloc_lst	**alloc_list;
 }	t_map;
 
@@ -106,10 +107,10 @@ int		draw_map(t_data *img);
 int		draw_lines(t_data *img);
 void draw_rays(t_data *img , float ray ,int color );
 void	ft_images(t_data *img);
-void	raycasting(t_data img);
-t_data	init_func(t_data img);
+
+t_data	*init_func(t_data *img);
 int		move_player(int key, t_data *img);
-void	destroy_window(t_data game);
+void	destroy_window(t_data *game);
 void	close_window(t_data *game);
 int		esc_key(int key, t_data *game);
 int		cross_key(void);
@@ -133,9 +134,9 @@ double	cast_rays4(t_data *img, float view);
 double	cast_rays5(t_data *img, float view);
 double	cast_rays6(t_data *img, float view);
 void	draw_rays(t_data *img , float ray ,int color );
-t_data	init_func(t_data img);
+
 void	ft_images(t_data *img);
-void	raycasting(t_data img);
+void raycasting(t_data *img);
 void dala(t_data *img , double ray, double *x, int color);
 void draw_world(t_data *img);
 void debug(t_data *img);
