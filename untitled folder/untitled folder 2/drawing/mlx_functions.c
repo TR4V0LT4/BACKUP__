@@ -56,7 +56,7 @@ double cast_rays1(t_data *img , float view)
 	ray = (sqrt((pow(ry, 2) + pow(rx, 2))));
 	next_y = floor(img->map->y - ry);
 	next_x = floor(img->map->x + rx);
-	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width  / 50 ) && next_x >= 0))
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
 			return (ray);
 	while (TRUE)
@@ -66,8 +66,9 @@ double cast_rays1(t_data *img , float view)
 		next_x = floor(img->map->x + rx );
 		next_y = floor(img->map->y - ry);
 		ray =  sqrt((pow(ry,2) + pow(rx,2)));
-		if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+		if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		{
+			printf("height = %d && width= %d && x = %d && y = %d \n" , img->height / 50 ,img->width / 50,next_x,next_y);
 			if(img->map->map[next_y - 1][next_x] == '1')
 				break;		
 		}
@@ -91,7 +92,7 @@ double cast_rays2(t_data *img , float view)
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x + rx ) ;
 
-if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 	if(img->map->map[next_y ][next_x ] == '1')
 		return ray;
 
@@ -104,7 +105,7 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 
 				ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 				next_y = floor(img->map->y - ry );
 				next_x = floor(img->map->x + rx ) ;
-				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
 					if(img->map->map[next_y ][next_x ] == '1')
 						break;		
@@ -129,7 +130,7 @@ double cast_rays3(t_data *img, float view)
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x - rx ) ;
 
-	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 	 	if(img->map->map[next_y ][next_x - 1 ] == '1')
 	 		return ray;
 	 	while(TRUE)
@@ -139,7 +140,7 @@ double cast_rays3(t_data *img, float view)
 				ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 				next_y = floor(img->map->y - ry );
 				next_x = floor(img->map->x - rx ) ;
-				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
 					if(img->map->map[next_y ][next_x -  1] == '1')
 						break;		
@@ -166,7 +167,7 @@ double cast_rays4(t_data *img, float view)
 	next_y = floor(img->map->y - ry );
 	next_x = floor(img->map->x - rx );
 	
-	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
 			return ray;
 
@@ -178,7 +179,7 @@ double cast_rays4(t_data *img, float view)
 					next_y = floor(img->map->y - ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
 
-					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y - 1  ][next_x ] == '1')
 							break;		
@@ -205,7 +206,7 @@ double cast_rays5(t_data *img, float view)
 	next_y = floor(img->map->y + ry );
 	next_x = floor(img->map->x - rx );
 	
-	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		if(img->map->map[next_y   ][next_x ] == '1')
 			return ray;
 
@@ -217,7 +218,7 @@ double cast_rays5(t_data *img, float view)
 					next_y = floor(img->map->y + ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
 
-					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y   ][next_x ] == '1')
 							break;		
@@ -243,7 +244,7 @@ double cast_rays6(t_data *img, float view)
 	ray =  (sqrt((pow(ry,2)+pow(rx,2))));	
 	next_y = floor(img->map->y + ry );
 	next_x = floor(img->map->x - rx );
-	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		if(img->map->map[next_y ][next_x ] == '1')
 			return ray;
 
@@ -255,7 +256,7 @@ double cast_rays6(t_data *img, float view)
 					next_y = floor(img->map->y + ry);
 					ray =  sqrt((pow(ry,2) + pow(rx,2)));
 
-					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
+					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width  / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y   ][next_x  ] == '1')
 							break;		
@@ -285,14 +286,14 @@ void	draw_rays(t_data *img, float ray,int color)
 
 t_data	*init_func(t_data *img)
 {
-	img->height = 750;
-	img->width = 750;
+	img->height = (img->map->len - 1) * 50;
+	img->width = (img->map->long_line ) * 50;
 	img->map->y = img->map->y_player;
 	img->map->x = img->map->x_player;
 	//img->map->last_ray = 0;
 	img->mlx = mlx_init();
-	img->win = mlx_new_window(img->mlx, img->width, img->height, "Hello");
-	img->img = mlx_new_image(img->mlx, img->width, img->height);
+	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
+	img->img = mlx_new_image(img->mlx, 1050, 1050);
 	return (img);
 }
 
@@ -310,11 +311,13 @@ void raycasting(t_data *img)
 {
 	img = init_func(img);
 	ft_images(img);
+	img->height = (img->map->len - 1) * 50;
+	img->width = (img->map->long_line ) * 50;
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	//draw_map(&img);
 		draw_world(img);
-		//cast_rays(&img);
+		cast_rays(img);
 	//player moves//
 	//cast_rays(&img);
 	destroy_window(img);

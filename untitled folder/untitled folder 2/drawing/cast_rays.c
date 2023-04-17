@@ -16,7 +16,6 @@ void up_right_rays(t_data *img, double *x)
 {
 	double ray1;
 	double ray2;
-	printf("in 1\n");
 	ray1 = cast_rays1(img, img->map->view);
 	ray2 = cast_rays2(img, img->map->view);
 	if (ray2 && ray1 > ray2)
@@ -29,7 +28,6 @@ void up_left_rays(t_data *img, double *x)
 {
 	double ray3;
 	double ray4;
-printf("in 2\n");
 	ray4 = cast_rays4(img, img->map->view);
 	ray3 = cast_rays3(img, img->map->view);
 	if (ray3 && ray4 > ray3)
@@ -42,7 +40,6 @@ void down_right_rays(t_data *img, double *x)
 {
 	double ray2;
 	double ray6;
-printf("in 3\n");
 	ray6 = cast_rays6(img, img->map->view);
 	ray2 = cast_rays2(img, img->map->view);
 	if (ray2 && ray6 > ray2)
@@ -55,7 +52,6 @@ void down_left_rays(t_data *img, double *x)
 {
 	double ray3;
 	double ray5;
-printf("in 4\n");
 	ray5 = cast_rays5(img, img->map->view);
 	ray3 = cast_rays3(img, img->map->view);
 	if (ray3 && ray5 > ray3)
@@ -88,7 +84,7 @@ void cast_rays(t_data *img)
 			down_left_rays(img, &x);
 		else if (img->map->view >= ((3 * M_PI) / 2) && img->map->view <= M_PI * 2)
 			down_right_rays(img, &x);
-		i += (M_PI / 3) / (img->width );
+		i += (M_PI / 3) / (1050);
 		x += 1;
 		img->map->i = i;
 	}

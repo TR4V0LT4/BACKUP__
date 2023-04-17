@@ -16,7 +16,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if ((x >= 0 && x <= data->width + 50 ) && (y >= 0 && y <  data->height))
+	if ((x >= 0 && x < 1050  ) && (y >= 0 && y <  1050))
 	{
 		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
@@ -102,24 +102,24 @@ int	draw_map(t_data *img)
 
 void dala(t_data *img , double ray, double *x, int color)
 {
-	img->height = 750;
-	img->width = 750;
+	//img->height = 750;
+	//img->width = 750;
 		//ray = ray * cos(img->map->angle - img->map->view);
-		double distance = (img->height / 2 ) * tan(M_PI / 6);
+		double distance = (1050 / 2 ) * tan(M_PI / 6);
 		
 			// double wall_d = round(ray   * cos( (img->map->i) ) ) ; 
-			
-			double wall = distance / ((ray ) );
-		 //wall = wall * cos(img->map->view);
-		double y = (img->height  / 2 ) - (wall / 2) ;
-		//printf("angle= %f && view = %f \n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI));
+		//ray *= cos(img->map->angle - (M_PI / 6));	
+		double wall = distance / ((ray ) );
+		  
+		double y = (1050  / 2 ) - (wall / 2) ;
+	//	printf("angle= %f && view = %f && cos = %f\n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , cos(img->map->i));
 	
 		//printf("ray = %f  wall = %f walld_d = %f \n ", ray   , wall , wall_d);
 		
 		
 		//int i = (( ray ) * 5 ;
 			
-			while(y <= (img->width / 2) + wall  )
+			while(y <= (1050 / 2) + wall  )
 			{
 				// mlx_pixel_put(img->mlx,img->win, *x, y, color);
 				my_mlx_pixel_put(img,*x,y, color);
@@ -158,21 +158,21 @@ void dala(t_data *img , double ray, double *x, int color)
 // }
 void draw_world(t_data *img)
 {
-	img->height = 750;
-	img->width = 750;
+	//img->height = 750;
+	//img->width = 750;
 	//printf(" %d %d\n", img->height , img->width);
 	int i = 0;
 	int j;
 	int color = 0xade8f4;
 
 
-		while(i < img->height )
+		while(i < 1050 )
 		{	
-			if(i > img->height / 2)
+			if(i > 1050 / 2)
 				color = 0x454545;
 
 			j = 0;
-			while(j < (img->width ) )
+			while(j < (1050 ) )
 			{
 				my_mlx_pixel_put(img,j, i, color);
 				j++;

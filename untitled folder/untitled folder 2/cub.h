@@ -38,6 +38,11 @@
 
 typedef int	t_bool;
 
+
+typedef struct s_tex
+{
+
+}t_tex;
 typedef struct s_alloc_lst
 {
 	void				*content;
