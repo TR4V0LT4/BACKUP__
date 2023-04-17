@@ -72,9 +72,13 @@ double cast_rays1(t_data *img , float view)
 		ray =  sqrt((pow(ry,2) + pow(rx,2)));
 		if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		{
-		//	printf("height = %d && width= %d && x = %d && y = %d \n" , img->height / 50 ,img->width / 50,next_x,next_y);
+			printf("height = %d && width= %d && x = %f && y = %f \n" , img->height / 50 ,img->width / 50,img->map->x,img->map->y);
 			if(img->map->map[next_y - 1][next_x] == '1')
-				break;		
+			{
+				// img->map->x_next = next_x;
+				// img->map->y_next = next_y;
+				break;
+			}
 		}
 		else
 			break;
@@ -111,8 +115,9 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 )
 				next_x = floor(img->map->x + rx ) ;
 				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
-					if(img->map->map[next_y ][next_x ] == '1')
+					if(img->map->map[next_y ][next_x ] == '1')	
 						break;		
+
 				}
 				else
 					break;
@@ -147,11 +152,11 @@ double cast_rays3(t_data *img, float view)
 				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
 					if(img->map->map[next_y ][next_x -  1] == '1')
-						break;		
+							break;			
 				}
 				else
 					break;
-		} 		
+		}	
 	return (ray);
 }
 
@@ -185,7 +190,7 @@ double cast_rays4(t_data *img, float view)
 
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 					{
-						if(img->map->map[next_y - 1  ][next_x ] == '1')
+						if(img->map->map[next_y - 1  ][next_x ] == '1')	
 							break;		
 					}
 					else
@@ -298,6 +303,8 @@ t_data	*init_func(t_data *img)
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);
+	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/cuub/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1.xpm", 
+		&img->t.w, &img->t.h);
 	return (img);
 }
 

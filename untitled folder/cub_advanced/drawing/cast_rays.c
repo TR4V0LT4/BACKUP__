@@ -18,6 +18,7 @@ void up_right_rays(t_data *img, double *x)
 	double ray2;
 	ray1 = cast_rays1(img, img->map->view);
 	ray2 = cast_rays2(img, img->map->view);
+	
 	if (ray2 && ray1 > ray2)
 		dala(img, ray2, x, 0xFF6000);
 	else

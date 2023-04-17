@@ -50,7 +50,7 @@ SRC = ft_atoi.c			\
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror 
 
 NAME = libft.a
 

@@ -29,9 +29,9 @@ SRC = cub.c \
 	
 NAME = cub3D
 
-CC = cc -g3
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror  -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 

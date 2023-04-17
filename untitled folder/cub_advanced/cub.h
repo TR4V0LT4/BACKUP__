@@ -38,7 +38,7 @@
 typedef int	t_bool;
 
 
-typedef struct s_tex
+typedef struct s_tex1
 {
 	void	*img;
 	char	*addr;
@@ -72,6 +72,8 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
+	double		x_next;
+	double		y_next;
 	//flaot      zawya;
 	float		view;	
 	double			i;
