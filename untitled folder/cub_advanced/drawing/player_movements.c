@@ -16,8 +16,8 @@ void	move_player_w(t_data *img)
 {
 	float y = img->map->y;
 	float x = img->map->x;
-	img->map->y -= sin(img->map->angle - (M_PI /6) ) / 5  ;
-	img->map->x += cos(img->map->angle - (M_PI /6)) / 5 ;
+	img->map->y -= sin((img->map->angle - (M_PI / 6) )  ) / 10  ;
+	img->map->x += cos((img->map->angle - (M_PI / 6) ) ) / 10 ;
 	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1')
 	{
 		img->map->y = y;
@@ -29,8 +29,8 @@ void	move_player_s(t_data *img)
 {
 	float y = img->map->y;
 	float x = img->map->x;
-	img->map->y += sin(img->map->angle - (M_PI /6) ) / 5  ;
-	img->map->x -= cos(img->map->angle - (M_PI /6)) / 5 ;
+	img->map->y += sin(img->map->angle - (M_PI / 6) ) / 10  ;
+	img->map->x -= cos(img->map->angle - (M_PI / 6) ) / 10 ;
 	
 	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1')
 	{
@@ -58,7 +58,7 @@ void	move_player_d(t_data *img)
 	{
 		mlx_put_image_to_window(img->mlx, img->win, img->shadow,
 			(img->map->x * 50) - 5, (img->map->y * 50) - 5);
-		img->map->y -= sin(img->map->angle - (M_PI / 2)) / 10;
+		img->map->y -= sin(img->map->angle - (M_PI / 2) ) / 10;
 		img->map->x += cos(img->map->angle - (M_PI / 2)) / 10;
 	}
 }

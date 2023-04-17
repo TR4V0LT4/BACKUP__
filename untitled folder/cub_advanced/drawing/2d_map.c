@@ -104,19 +104,24 @@ void dala(t_data *img , double ray, double *x, int color)
 {
 	//img->height = 750;
 	//img->width = 750;
-		//ray = ray * cos(img->map->angle - img->map->view);
+	// if ((int)img->map->view % 90 != 0)
+		ray = ray * cos(( img->map->angle - (img->map->view) ));
+
 		double distance = (1050 / 2 ) * tan(M_PI / 6);
-		
+		// printf("angle= %f && view = %f && diff  = %f i = %f \n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , ( img->map->angle - (img->map->view)) * (180 / M_PI), (img->map->i) * (180 / M_PI));
 			// double wall_d = round(ray   * cos( (img->map->i) ) ) ; 
-		//ray *= cos(img->map->angle - (M_PI / 6));	
-		double wall = distance / ((ray ) );
+		// ray *= cos(img->map->angle - (M_PI / 6));	
+		double wall = distance / ((ray ) ) ;
 		  
 		double y = (1050  / 2 ) - (wall / 2) ;
-	//	printf("angle= %f && view = %f && cos = %f\n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , cos(img->map->i));
+		
 	
-		//printf("ray = %f  wall = %f walld_d = %f \n ", ray   , wall , wall_d);
-		
-		
+		// printf("ray = %f  wall = %f \n ", ray   , wall);
+		// 	img->t.addr = mlx_get_data_addr(img->t.img, &img->t.bits_per_pixel, &img->t.line_length, &img->t.endian);
+	       
+        //    char *dst = img->t.addr + ((int )*x) * img->t.line_length +(int )y * (img->t.bits_per_pixel / 8);
+
+			// color = *(unsigned int*)dst;
 		//int i = (( ray ) * 5 ;
 			
 			while(y <= (1050 / 2) + wall  )

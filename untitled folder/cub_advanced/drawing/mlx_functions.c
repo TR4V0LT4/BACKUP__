@@ -28,8 +28,12 @@ int	move_player(int keycode, t_data *img)
 		turn_right(img);
 	if (keycode == 123)
 		turn_left(img);
+		//printf("angle= %f && view = %f && i = %f\n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , (img->map->i));
 	draw_world(img);
 	cast_rays(img);
+	// draw_map(img);
+	// debug(img);	
+
 	return (0);
 }
 
@@ -68,7 +72,7 @@ double cast_rays1(t_data *img , float view)
 		ray =  sqrt((pow(ry,2) + pow(rx,2)));
 		if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		{
-			printf("height = %d && width= %d && x = %d && y = %d \n" , img->height / 50 ,img->width / 50,next_x,next_y);
+		//	printf("height = %d && width= %d && x = %d && y = %d \n" , img->height / 50 ,img->width / 50,next_x,next_y);
 			if(img->map->map[next_y - 1][next_x] == '1')
 				break;		
 		}
@@ -299,23 +303,26 @@ t_data	*init_func(t_data *img)
 
 void	ft_images(t_data *img)
 {
+	
 	img->wall = mlx_xpm_file_to_image(img->mlx, "./images/wall.xpm",
 		&img->width, &img->height);
 	img->player = mlx_xpm_file_to_image(img->mlx, "./images/player.xpm",
 		&img->width, &img->height);
 	img->shadow = mlx_xpm_file_to_image(img->mlx, "./images/background.xpm",
 		&img->width, &img->height);
+	
 }
 
-void raycasting(t_data *img)
+void raycasting(t_data *img )
 {
 	img = init_func(img);
-	ft_images(img);
+	ft_images(img );
 	img->height = (img->map->len - 1) * 50;
 	img->width = (img->map->long_line ) * 50;
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	//draw_map(&img);
+	// draw_map(img);
+	// debug(img);	
 		draw_world(img);
 		cast_rays(img);
 	//player moves//

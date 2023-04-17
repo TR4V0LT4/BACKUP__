@@ -66,12 +66,15 @@ void cast_rays(t_data *img)
 	double x = 0;
 	mlx_clear_window(img->mlx, img->win);
 	// if(img->map->view >= (M_PI / 6))
-		
+	
+	
 	while (i < (M_PI / 3))
 	{
 		//printf("view = %f && angle = %f \n", img->map->view *( 180 / M_PI) , img->map->angle *( 180 / M_PI));
 		
-		img->map->view = img->map->angle  - i;
+		//img->map->view = img->map->angle - i;
+		img->map->view = img->map->angle - (i / 2) ;
+		
 		if (img->map->view >= (2 * M_PI))
 			img->map->view -= (2 * M_PI);
 		if(img->map->view < 0 )
@@ -86,7 +89,7 @@ void cast_rays(t_data *img)
 			down_right_rays(img, &x);
 		i += (M_PI / 3) / (1050);
 		x += 1;
-		img->map->i = i;
+		//img->map->i = img->map->angle - (img->map->angle - (i / 2));
 	}
 	// img->map->view = save_angle;
 	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);

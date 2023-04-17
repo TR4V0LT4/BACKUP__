@@ -40,8 +40,15 @@ typedef int	t_bool;
 
 typedef struct s_tex
 {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		w;
+	int		h;
+}				t_ex;
 
-}t_tex;
 typedef struct s_alloc_lst
 {
 	void				*content;
@@ -65,6 +72,7 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
+	//flaot      zawya;
 	float		view;	
 	double			i;
 	t_alloc_lst	**alloc_list;
@@ -85,6 +93,7 @@ typedef struct s_data{
 	int		width;
 	int		height;
 	t_map	*map;
+	t_ex	t;
 }	t_data;
 
 // ----------> PARSING <---------- //

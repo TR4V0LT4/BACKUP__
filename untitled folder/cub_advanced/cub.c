@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_data	img;
 
+
 	img.map = malloc(sizeof(t_map *));
 	if (ac > 1)
 	{
@@ -23,6 +24,10 @@ int	main(int ac, char **av)
 			exit_error("ERROR : PATH must be *.cub\n");
 		img.map = parsing(av[1]);
 		 raycasting(&img);
+		 
+		 img.t.img = mlx_xpm_file_to_image(img.mlx,"./images/ok.xpm", 
+		&img.t.w, &img.t.h);
+	
 	}
 	else
 		exit_error("ERROR : Enought args [./cub3D map.cub]\n");
