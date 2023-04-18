@@ -45,7 +45,7 @@ int	comp(float z, float y)
 	return (fabs(z - y) <= eps);
 }
 
-double cast_rays1(t_data *img , float view)
+double	cast_rays1(t_data *img , float view , double *r)
 {	
 	float	ry = 0;
 	float 	rx = 0;
@@ -60,21 +60,38 @@ double cast_rays1(t_data *img , float view)
 	ray = (sqrt((pow(ry, 2) + pow(rx, 2))));
 	next_y = floor(img->map->y - ry);
 	next_x = floor(img->map->x + rx);
+
+	//double r = rx;
+
 	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width  / 50 ) && next_x >= 0))
+	{	
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
-			return (ray);
+		{
+			*r = ( ry)  ;
+				return (ray);
+		
+		}
+	
+	}
+
 	while (TRUE)
 	{	
 		ry += 1; 
 		rx = fabs((fabs(ry) / tan(view)));
 		next_x = floor(img->map->x + rx );
+		
 		next_y = floor(img->map->y - ry);
 		ray =  sqrt((pow(ry,2) + pow(rx,2)));
 		if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 		{
-			printf("height = %d && width= %d && x = %f && y = %f \n" , img->height / 50 ,img->width / 50,img->map->x,img->map->y);
+			//printf("height = %d && width= %d && x = %f && y = %f \n" , img->height / 50 ,img->width / 50,img->map->x,img->map->y);
 			if(img->map->map[next_y - 1][next_x] == '1')
 			{
+				//img->map->x_next = rx;
+				//printf("  rx = %f \n", r);
+					*r = ( ry)  ;
+			//	img->map->rx = rx * 50;
+			//	img->map->ry = ry * 50;
 				// img->map->x_next = next_x;
 				// img->map->y_next = next_y;
 				break;
@@ -83,10 +100,11 @@ double cast_rays1(t_data *img , float view)
 		else
 			break;
 	}
+	
 	return (ray);
 }
 
-double cast_rays2(t_data *img , float view)
+double	cast_rays2(t_data *img , float view , double *r)
 {
 	float	ry = 0;
 	float 	rx = 0;
@@ -101,9 +119,14 @@ double cast_rays2(t_data *img , float view)
 	next_x = floor(img->map->x + rx ) ;
 
 if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
+{	
 	if(img->map->map[next_y ][next_x ] == '1')
-		return ray;
-
+		{
+			*r = ( rx)  ;
+				return (ray);
+		
+		}
+}
 	 	while(TRUE)
 		{	
 	 			rx +=  1;
@@ -116,7 +139,10 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 )
 				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
 					if(img->map->map[next_y ][next_x ] == '1')	
+					{
+						*r = ( rx) / 50  ;
 						break;		
+					}
 
 				}
 				else
@@ -125,7 +151,7 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 )
 	return (ray);
 }
 
-double cast_rays3(t_data *img, float view)
+double cast_rays3(t_data *img, float view , double *r)
 {
 	float	ry = 0;
 	float 	rx = 0;
@@ -140,8 +166,14 @@ double cast_rays3(t_data *img, float view)
 	next_x = floor(img->map->x - rx ) ;
 
 	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
+	{
 	 	if(img->map->map[next_y ][next_x - 1 ] == '1')
-	 		return ray;
+	 	{
+			*r = ( rx)  ;
+				return (ray);
+		
+		}
+	}
 	 	while(TRUE)
 		{	
 	 			rx +=  1;
@@ -152,7 +184,10 @@ double cast_rays3(t_data *img, float view)
 				if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 				{
 					if(img->map->map[next_y ][next_x -  1] == '1')
-							break;			
+						{
+							*r = ( rx) ;
+							break;
+						}			
 				}
 				else
 					break;
@@ -160,7 +195,7 @@ double cast_rays3(t_data *img, float view)
 	return (ray);
 }
 
-double cast_rays4(t_data *img, float view)
+double cast_rays4(t_data *img, float view ,double *r)
 {	
 	float	ry = 0;
 	float 	rx = 0;
@@ -177,8 +212,13 @@ double cast_rays4(t_data *img, float view)
 	next_x = floor(img->map->x - rx );
 	
 	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
+	{
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
+		{
+			*r = ( ry)  ;
 			return ray;
+		}
+	}	
 
 			while (TRUE)
 			 {	
@@ -191,7 +231,10 @@ double cast_rays4(t_data *img, float view)
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y - 1  ][next_x ] == '1')	
-							break;		
+						{
+								*r = ( ry)  ;
+								break;
+						}		
 					}
 					else
 						break;	
@@ -199,7 +242,7 @@ double cast_rays4(t_data *img, float view)
 	return (ray);
 }
 
-double cast_rays5(t_data *img, float view)
+double cast_rays5(t_data *img, float view ,double *r)
 {	
 	float	ry = 0;
 	float 	rx = 0;
@@ -216,9 +259,13 @@ double cast_rays5(t_data *img, float view)
 	next_x = floor(img->map->x - rx );
 	
 	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
+	{	
 		if(img->map->map[next_y   ][next_x ] == '1')
+		{
+			*r = ( ry)  ;
 			return ray;
-
+		}	
+	}
 			while (TRUE)
 			 {				
 					ry += 1; 
@@ -230,7 +277,10 @@ double cast_rays5(t_data *img, float view)
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y   ][next_x ] == '1')
-							break;		
+						{
+							*r = ( ry)  ;
+							break;
+						}		
 					}
 					else
 						break;
@@ -238,7 +288,7 @@ double cast_rays5(t_data *img, float view)
 	return (ray);
 }
 
-double cast_rays6(t_data *img, float view)
+double cast_rays6(t_data *img, float view ,double *r)
 {	
 	float	ry = 0;
 	float 	rx = 0;
@@ -254,9 +304,13 @@ double cast_rays6(t_data *img, float view)
 	next_y = floor(img->map->y + ry );
 	next_x = floor(img->map->x - rx );
 	if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 ) && next_x >= 0))
-		if(img->map->map[next_y ][next_x ] == '1')
-			return ray;
-
+	{
+			if(img->map->map[next_y ][next_x ] == '1')
+			{	
+				*r = ( ry)  ;
+				return ray;
+			}
+	}
 			while (TRUE)
 			 {	
 					ry += 1; 
@@ -268,7 +322,10 @@ double cast_rays6(t_data *img, float view)
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width  / 50 ) && next_x >= 0))
 					{
 						if(img->map->map[next_y   ][next_x  ] == '1')
-							break;		
+						{
+							*r = ( ry)  ;
+								break;		
+						}
 					}
 					else
 						break;
@@ -303,7 +360,7 @@ t_data	*init_func(t_data *img)
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);
-	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/cuub/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1.xpm", 
+	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/dd/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1.xpm", 
 		&img->t.w, &img->t.h);
 	return (img);
 }

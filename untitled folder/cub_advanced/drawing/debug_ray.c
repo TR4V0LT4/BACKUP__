@@ -41,8 +41,12 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 
 
 					if((next_y < ((img->height / 50)) && next_y > 0) && (next_x <= (img->width / 50 ) && next_x >= 0))
 					{
+
 						if(img->map->map[next_y - 1  ][next_x ] == '1')
-							break;		
+						{
+							//printf("  x = %d \n", next_x);
+							break;
+						}
 					}
 					else
 						break;

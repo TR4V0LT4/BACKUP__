@@ -72,8 +72,8 @@ typedef struct s_map
 	int			long_line;
 	int			len;
 	float		angle;
-	double		x_next;
-	double		y_next;
+	double		rx;
+	double		ry;
 	//flaot      zawya;
 	float		view;	
 	double			i;
@@ -146,17 +146,17 @@ void	down_right_rays(t_data *img, double *x);
 void	down_left_rays(t_data *img, double *x);
 void	right_side_angle(t_data *img, double *x);
 void	left_side_angle(t_data *img, double *x);
-double	cast_rays1(t_data *img , float view);
-double	cast_rays2(t_data *img , float view);
-double	cast_rays3(t_data *img, float view);
-double	cast_rays4(t_data *img, float view);
-double	cast_rays5(t_data *img, float view);
-double	cast_rays6(t_data *img, float view);
+double	cast_rays1(t_data *img , float view , double *rx);
+double	cast_rays2(t_data *img , float view , double *ry);
+double	cast_rays3(t_data *img, float view , double *rx);
+double	cast_rays4(t_data *img, float view, double *rx);
+double	cast_rays5(t_data *img, float view, double *rx);
+double	cast_rays6(t_data *img, float view, double *rx);
 void	draw_rays(t_data *img , float ray ,int color );
 
 void	ft_images(t_data *img);
 void raycasting(t_data *img);
-void dala(t_data *img , double ray, double *x, int color);
+void dala(t_data *img , double ray, double *x, int color , int r);
 void draw_world(t_data *img);
 void debug(t_data *img);
 
