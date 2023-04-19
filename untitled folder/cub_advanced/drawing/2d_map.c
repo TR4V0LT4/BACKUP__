@@ -14,10 +14,12 @@
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	char	*dst;
+	char *dst;
 
 	if ((x >= 0 && x < 1050  ) && (y >= 0 && y <  1050))
 	{
+		//data->addr[y * 1050 +  x ] =  color; 
+		//dst = (unsigned int *) (data->addr + y * 1050 + x* (data->bits_per_pixel / 8) );
 		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
@@ -71,6 +73,8 @@ int	draw_map(t_data *img)
 	draw_lines(img);
 	mlx_put_image_to_window(img->mlx, img->win, img->player,
 		(img->map->x * 50 - 5), (img->map->y * 50) - 5);
+		
+
 	// int	x;
 	// int	y;
 
@@ -100,12 +104,12 @@ int	draw_map(t_data *img)
 	return (0);
 }
 
-void dala(t_data *img , double ray, double *x, int color, int r)
+void dala(t_data *img , double ray, double *x, int color, double r)
 {
 	//img->height = 750;
 	//img->width = 750;
 	// if ((int)img->map->view % 90 != 0)
-		ray = ray * cos(( img->map->angle - (img->map->view)));
+		//ray = ray * cos(( img->map->angle - (img->map->view)));
 		
 		double distance = (1050 / 2 ) * tan(M_PI / 6);
 		double wall = distance / ((ray ) ) ;
@@ -115,15 +119,16 @@ void dala(t_data *img , double ray, double *x, int color, int r)
 		(void ) r;
 
 		// double i =  (img->map->x_next * 50) * ()  ;
-		//int i = (r ) * (img->t.w / wall );
-		//printf(" =>>>>>>>>>>>>>>>>>>x = %d \n" , i);
-		// if(i == 1000)
-		// 	*x = 0;
+			double i = (r) * (img->t.w );
+
+		//printf(" =>>>>>>>>>>>>>>>>>>x = %f && r = %f \n" , i , r);
+		// if(*x == 1000)
+			// *x = 0;
 		// printf("angle= %f && view = %f && diff  = %f i = %f \n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , ( img->map->angle - (img->map->view)) * (180 / M_PI), (img->map->i) * (180 / M_PI));
 			// double wall_d = round(ray   * cos( (img->map->i) ) ) ; 
 		// ray *= cos(img->map->angle - (M_PI / 6));	
 			
-			//double j = 100;
+			//double j = 100;cc
 			while(y < (1050 / 2) + (wall / 2)  )
 			{
 			//	printf("x = %d && j = %f \n ", i , (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall));	
@@ -133,13 +138,13 @@ void dala(t_data *img , double ray, double *x, int color, int r)
 				img->t.addr = mlx_get_data_addr(img->t.img, &img->t.bits_per_pixel, &img->t.line_length, &img->t.endian);
 				
 				//char *dst = img->t.addr + (int)j * img->t.line_length + (int)i ;
-				char *dst = img->t.addr + (int)j * img->t.line_length + *(int*)x * (img->t.bits_per_pixel / 8)  ;
+				char *dst = img->t.addr + (int)j * img->t.line_length + (int)(i ) * (img->t.bits_per_pixel / 8)  ;
 				
 				//char *dst = img->t.addr[ y * l + x ]
 				color = *(unsigned int*)dst;
 				my_mlx_pixel_put(img,*x,y, color);
 				y += 1;
-				j++;
+				//j++;
  			}
 	//mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 }

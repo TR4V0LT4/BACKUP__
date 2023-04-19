@@ -31,8 +31,10 @@ int	move_player(int keycode, t_data *img)
 		//printf("angle= %f && view = %f && i = %f\n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , (img->map->i));
 	draw_world(img);
 	cast_rays(img);
-	// draw_map(img);
+	
 	// debug(img);	
+	// draw_map(img);
+	
 
 	return (0);
 }
@@ -57,7 +59,9 @@ double	cast_rays1(t_data *img , float view , double *r)
 	line = floor(img->map->y) ;
 	ry = img->map->y - line; 
 	rx = (ry / tan(view))  ;
+	//printf("rx === %f\n", rx);
 	ray = (sqrt((pow(ry, 2) + pow(rx, 2))));
+	
 	next_y = floor(img->map->y - ry);
 	next_x = floor(img->map->x + rx);
 
@@ -67,9 +71,8 @@ double	cast_rays1(t_data *img , float view , double *r)
 	{	
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
 		{
-			*r = ( ry)  ;
-				return (ray);
-		
+			*r = (( img->map->x  + rx) - (int ) ( img->map->x  + rx)  )    ;
+			return (ray);
 		}
 	
 	}
@@ -89,7 +92,7 @@ double	cast_rays1(t_data *img , float view , double *r)
 			{
 				//img->map->x_next = rx;
 				//printf("  rx = %f \n", r);
-					*r = ( ry)  ;
+					*r = (( img->map->x  + rx) - (int ) ( img->map->x  + rx)  )    ;
 			//	img->map->rx = rx * 50;
 			//	img->map->ry = ry * 50;
 				// img->map->x_next = next_x;
@@ -122,7 +125,7 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 )
 {	
 	if(img->map->map[next_y ][next_x ] == '1')
 		{
-			*r = ( rx)  ;
+			*r = ((img->map->y - ry) - (int) (img->map->y - ry))  ;
 				return (ray);
 		
 		}
@@ -140,7 +143,7 @@ if((next_y < ((img->height / 50)) && next_y > 0) && (next_x < (img->width / 50 )
 				{
 					if(img->map->map[next_y ][next_x ] == '1')	
 					{
-						*r = ( rx) / 50  ;
+						*r = ((img->map->y - ry) - (int) (img->map->y - ry))  ;
 						break;		
 					}
 
@@ -360,7 +363,7 @@ t_data	*init_func(t_data *img)
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);
-	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/dd/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1.xpm", 
+	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/dd/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1 (1).xpm", 
 		&img->t.w, &img->t.h);
 	return (img);
 }
@@ -389,8 +392,8 @@ void raycasting(t_data *img )
 	// debug(img);	
 		draw_world(img);
 		cast_rays(img);
-	//player moves//
-	//cast_rays(&img);
+	// player moves//
+	// cast_rays(&img);
 	destroy_window(img);
 	mlx_hook(img->win, 2, 0L, move_player, img);
 	mlx_loop(img->mlx);

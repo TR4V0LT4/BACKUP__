@@ -17,7 +17,7 @@ void	move_player_w(t_data *img)
 	float y = img->map->y;
 	float x = img->map->x;
 	img->map->y -= sin((img->map->angle - (M_PI / 6) )  ) / 10  ;
-	img->map->x += cos((img->map->angle - (M_PI / 6) ) ) / 10 ;
+	img->map->x += cos((img->map->angle - (M_PI / 6)  ) ) / 10 ;
 	if (img->map->map[(int)img->map->y][(int)img->map->x] == '1')
 	{
 		img->map->y = y;
