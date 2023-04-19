@@ -113,9 +113,9 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 		
 		double distance = (1050 / 2 ) * tan(M_PI / 6);
 		double wall = distance / ((ray ) ) ;
-		
+		 wall *= 2;
 		double y = (1050  / 2 ) - (wall / 2) ;
-		//  wall *= 2;
+		 
 
 		// double i =  (img->map->x_next * 50) * ()  ;
 			double i = (r) * (img->t.w);
@@ -128,11 +128,11 @@ void dala(t_data *img , double ray, double *x, int color, double r)
 		// ray *= cos(img->map->angle - (M_PI / 6));	
 			
 			//double j = 100;cc
-			while(y < (1050 / 2) + (wall / 2)  )
+			while(y < (1050 / 2) + (wall / 2 )  )
 			{
 			//	printf("x = %d && j = %f \n ", i , (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall));	
-				double j = (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall);
-		 		
+				 double j = (y - (1050  / 2 ) + (wall / 2)) * (img->t.h / wall);
+		 		//double j = wall * (img->t.h);	
 				// printf(" j = %f\n" , j);
 				img->t.addr = mlx_get_data_addr(img->t.img, &img->t.bits_per_pixel, &img->t.line_length, &img->t.endian);
 				

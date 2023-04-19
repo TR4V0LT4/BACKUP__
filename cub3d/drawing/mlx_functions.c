@@ -28,7 +28,7 @@ int	move_player(int keycode, t_data *img)
 		turn_right(img);
 	if (keycode == 123)
 		turn_left(img);
-		//printf("angle= %f && view = %f && i = %f\n", img->map->angle * (180 / M_PI) ,img->map->view * (180 / M_PI) , (img->map->i));
+	
 	draw_world(img);
 	cast_rays(img);
 	
@@ -172,7 +172,7 @@ double cast_rays3(t_data *img, float view , double *r)
 	{
 	 	if(img->map->map[next_y ][next_x - 1 ] == '1')
 	 	{
-			*r = ( rx)  ;
+			*r = ((img->map->y - ry) - (int) (img->map->y - ry));
 				return (ray);
 		
 		}
@@ -188,7 +188,7 @@ double cast_rays3(t_data *img, float view , double *r)
 				{
 					if(img->map->map[next_y ][next_x -  1] == '1')
 						{
-							*r = ( rx) ;
+							*r = ((img->map->y - ry) - (int) (img->map->y - ry)); 
 							break;
 						}			
 				}
@@ -218,7 +218,7 @@ double cast_rays4(t_data *img, float view ,double *r)
 	{
 		if(img->map->map[next_y - 1  ][next_x ] == '1')
 		{
-			*r = ( ry)  ;
+				*r = ( img->map->x  - rx) - (int ) ( img->map->x  - rx);
 			return ray;
 		}
 	}	
@@ -235,7 +235,8 @@ double cast_rays4(t_data *img, float view ,double *r)
 					{
 						if(img->map->map[next_y - 1  ][next_x ] == '1')	
 						{
-								*r = ( ry)  ;
+								*r = ( img->map->x  - rx) - (int ) ( img->map->x  - rx);
+								printf(" r = %f && ry = %f \n" , rx  , ry );
 								break;
 						}		
 					}
@@ -265,7 +266,7 @@ double cast_rays5(t_data *img, float view ,double *r)
 	{	
 		if(img->map->map[next_y   ][next_x ] == '1')
 		{
-			*r = ( ry)  ;
+			*r = (( img->map->x  - rx) - (int ) ( img->map->x  - rx)  );
 			return ray;
 		}	
 	}
@@ -281,7 +282,7 @@ double cast_rays5(t_data *img, float view ,double *r)
 					{
 						if(img->map->map[next_y   ][next_x ] == '1')
 						{
-							*r = ( ry)  ;
+							*r = (( img->map->x  - rx) - (int ) ( img->map->x  - rx)  );
 							break;
 						}		
 					}
@@ -310,7 +311,7 @@ double cast_rays6(t_data *img, float view ,double *r)
 	{
 			if(img->map->map[next_y ][next_x ] == '1')
 			{	
-				*r = ( ry)  ;
+				*r = (( img->map->x  - rx) - (int ) ( img->map->x  - rx)  );
 				return ray;
 			}
 	}
@@ -326,7 +327,7 @@ double cast_rays6(t_data *img, float view ,double *r)
 					{
 						if(img->map->map[next_y   ][next_x  ] == '1')
 						{
-							*r = ( ry)  ;
+							*r = (( img->map->x  - rx) - (int ) ( img->map->x  - rx)  );
 								break;		
 						}
 					}
@@ -363,7 +364,7 @@ t_data	*init_func(t_data *img)
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, 1050, 1050, "Hello");
 	img->img = mlx_new_image(img->mlx, 1050, 1050);
-	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/dd/untitled folder/cub_advanced/images/katai_mythological_phoenix_bird_close-up_spread_wings_looks_up__2ab5e0e8-2c20-4a5e-ba56-b76e80ee0cf1 (1).xpm", 
+	img->t.img = mlx_xpm_file_to_image(img->mlx,"/Users/wlahyani/Desktop/dd/cub3d/images/wlahyani.xpm", 
 		&img->t.w, &img->t.h);
 	return (img);
 }

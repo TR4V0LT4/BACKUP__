@@ -25,7 +25,7 @@ void up_right_rays(t_data *img, double *x)
 	ray1 = cast_rays1(img, img->map->view , &rx );
 	ray2 = cast_rays2(img, img->map->view , &ry);
 	
-	//printf(" rx = %f && ry = %f \n" , rx  , ry );
+	
 	if (ray2 && ray1 > ray2)
 		dala(img, ray2, x, 0xFF6000 , ry  );
 	else
@@ -38,8 +38,9 @@ void up_left_rays(t_data *img, double *x)
 	double ray4;
 	double	rx;
 	double	ry;
-	ray4 = cast_rays4(img, img->map->view, &rx);
-	ray3 = cast_rays3(img, img->map->view , &ry);
+	ray4 = cast_rays4(img, img->map->view, &ry);
+	ray3 = cast_rays3(img, img->map->view , &rx);
+	
 	
 	if (ray3 && ray4 > ray3)
 		dala(img, ray3, x, 0xFF6000 , rx);
@@ -54,8 +55,8 @@ void down_right_rays(t_data *img, double *x)
 	double ry;
 	double	rx;
 	
-	ray6 = cast_rays6(img, img->map->view , &rx);
-	ray2 = cast_rays2(img, img->map->view , &ry);
+	ray6 = cast_rays6(img, img->map->view , &ry);
+	ray2 = cast_rays2(img, img->map->view , &rx);
 	if (ray2 && ray6 > ray2)
 		dala(img, ray2, x, 0xFF6000, rx);
 	else
@@ -68,8 +69,8 @@ void down_left_rays(t_data *img, double *x)
 	double ray5;
 	double	rx;
 	double	ry;
-	ray5 = cast_rays5(img, img->map->view , &rx);
-	ray3 = cast_rays3(img, img->map->view , &ry);
+	ray5 = cast_rays5(img, img->map->view , &ry);
+	ray3 = cast_rays3(img, img->map->view , &rx);
 	if (ray3 && ray5 > ray3)
 		dala(img, ray3, x, 0xFF6000 , rx);
 	else
@@ -89,7 +90,7 @@ void cast_rays(t_data *img)
 		//printf("view = %f && angle = %f \n", img->map->view *( 180 / M_PI) , img->map->angle *( 180 / M_PI));
 		
 		//img->map->view = img->map->angle - i;
-		img->map->view = img->map->angle - i  ;
+		img->map->view = img->map->angle - i   ;
 		//printf("view == %f\n", img->map->view);
 		if (img->map->view >= (2 * M_PI))
 			img->map->view -= (2 * M_PI);
@@ -99,12 +100,12 @@ void cast_rays(t_data *img)
 		if (img->map->view >= 0 && img->map->view <= (M_PI / 2))
 			up_right_rays(img, &x);
 		
-		// else if (img->map->view > (M_PI / 2) && img->map->view < M_PI)
-		// 	up_left_rays(img, &x);
-		// else if (img->map->view >= M_PI && img->map->view < ((3 * M_PI) / 2))
-		// 	down_left_rays(img, &x);
-		// else if (img->map->view >= ((3 * M_PI) / 2) && img->map->view <= M_PI * 2)
-		// 	down_right_rays(img, &x);
+		else if (img->map->view > (M_PI / 2) && img->map->view < M_PI)
+			up_left_rays(img, &x);
+		else if (img->map->view >= M_PI && img->map->view < ((3 * M_PI) / 2))
+			down_left_rays(img, &x);
+		else if (img->map->view >= ((3 * M_PI) / 2) && img->map->view <= M_PI * 2)
+			down_right_rays(img, &x);
 		i += (M_PI / 3 ) / 1050;
 		x += 1;
 		//img->map->i = img->map->angle - (img->map->angle - (i / 2));
